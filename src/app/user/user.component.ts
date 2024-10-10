@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -8,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  userName = 'youngTech'
+  @Input() name = ''
+  @Output() incrementCountEvent = new EventEmitter<number>();
+  count = 0;
+
+  onClick(){
+    this.count++;
+    this.incrementCountEvent.emit(this.count)
+  }
 }
